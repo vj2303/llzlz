@@ -37,7 +37,7 @@ const BillDetails = () => {
 
       const services = res.data?.data?.services;
       console.log({ services });
-      alert("fetching salon details")
+      // alert("fetching salon details")
 
       setServices(services);
       // Set the default service as selected (first one in the list) if serviceId isn't in the URL

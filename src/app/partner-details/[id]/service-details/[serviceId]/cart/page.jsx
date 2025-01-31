@@ -15,20 +15,22 @@ import { Provider, useSelector } from "react-redux";
 import store from "../../../../../../redux/store";
 
 const Page = () => {
-  const [isSuccessfullyAppliedVisible, setIsSuccessfullyAppliedVisible] =
-    useState(false);
+  const [isSuccessfullyAppliedVisible, setIsSuccessfullyAppliedVisible] = useState(false);
   const [appliedOfferDetails, setAppliedOfferDetails] = useState(null);
   const searchParams = useSearchParams();
-  
 
   useEffect(() => {
     // Check if the offer was applied from the query parameter
     const offerApplied = searchParams.get("offerApplied");
+
+    // Show the popup only if the offer is applied
     if (offerApplied === "true") {
       setIsSuccessfullyAppliedVisible(true);
       setAppliedOfferDetails({
         description: "20% Discount + 10% Cashback", // Example details
       });
+    } else {
+      setIsSuccessfullyAppliedVisible(false); // Ensure the popup isn't shown if offerApplied is not true
     }
   }, [searchParams]);
 
@@ -54,13 +56,9 @@ const Page = () => {
           <LocationSupport />
           <ChooseOffers />
           <BillDetails />
+     
+
           <Offers />
-          {/* <BottomSheet /> */}
-          {/* <BottomSheet2
-          isOpen={true} 
-          onClose={() => {}}
-          service={{ serviceName: 'Sample Service' }}
-          /> */}
 
           <BottomSheet onClick={handleOpenBottomSheet2} />
           {showBottomSheet2 && (

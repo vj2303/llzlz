@@ -100,14 +100,14 @@ const BillDetails = () => {
             total += +ele.display_rate;
             return (
               <div className='flex mt-2 justify-between' key={ele.id}>
-                <div className='flex'>
+               <div className='flex items-center'>
                   <div className='flex flex-col items-center'>
                     {ele.gender === "Women" ? (
                       <Image
                         src='/Women.svg'
                         alt='img'
-                        width={15}
-                        height={15}
+                        width={20}
+                        height={20}
                       />
                     ) : ele.gender === "Men" ? (
                       <Image
@@ -117,12 +117,12 @@ const BillDetails = () => {
                         height={12}
                       />
                     ) : (
-                      <Image src='/Unisex.svg' alt='img' width={12} height={12} />
+                      <Image src='/Unisex.svg' alt='img' width={20} height={20} />
                     )}
                   </div>
 
                   <div className='ml-4'>
-                    {services.length > 0 && <p className='text-[14px]'>{handleGetServiceName(ele.serviceId) || "ser"}</p>}
+                    {services.length > 0 && <p className='text-[10px] text-gray-500'>{handleGetServiceName(ele.serviceId) || "ser"}</p>}
                     <p className='text-[9px] border-b'>{ele.one_line_description}</p>
                     <p className='text-[14px]'>{ele.name}</p>
                     <p className="text-[12px]">
@@ -134,6 +134,7 @@ const BillDetails = () => {
                       setSelectedId(ele.id)
                     }}>Edit</p>}
                   </div>
+                </div>
                 </div>
 
                 <X className='border border-[#000] border-w-2 rounded-full' onClick={() => dispatch(removeFromCart(ele.id))} />
